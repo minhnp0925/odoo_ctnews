@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ctnews.access_ctnews_category,access_ctnews_category,ctnews.model_ctnews_category,base.group_user,1,1,1,1
+ctnews.access_ctnews_article,access_ctnews_article,ctnews.model_ctnews_article,base.group_user,1,1,1,1
+ctnews.access_ctnews_keyword,access_ctnews_keyword,ctnews.model_ctnews_keyword,base.group_user,1,1,1,1

@@ -5,7 +5,6 @@ import re
 import requests
 
 from werkzeug.urls import url_parse
-
 from odoo import api, models
 
 
