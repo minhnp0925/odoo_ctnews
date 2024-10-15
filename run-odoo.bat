@@ -10,13 +10,6 @@ set CMD=python odoo-bin -r %DB_USER% -w %DB_PASSWORD% --addons-path=%ADDONS_PATH
 REM Initialize the full command
 set FULL_CMD=%CMD%
 
-REM Check if --dev flag is present
-for %%A in (%*) do (
-    if "%%A"=="--dev" (
-        set FULL_CMD=%FULL_CMD% --dev=reload
-    )
-)
-
 REM Check if an argument was provided (-u)
 if "%1"=="" (
     REM If no argument is given, just run the command

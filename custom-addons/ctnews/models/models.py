@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
-
 from odoo import models, fields, api
-
+import odoo.addons.http_routing.models.ir_http as ir_http
+from unidecode import unidecode_expect_nonascii
 
 class Category(models.Model):
     _name = 'ctnews.category'
@@ -11,6 +11,7 @@ class Category(models.Model):
         'website.searchable.mixin',
     ]
     _order = 'name'
+    _log_access = False
 
     name = fields.Char(string='Category Name', required=True)
     desc = fields.Char(string='Category Description')
@@ -41,6 +42,15 @@ class Article(models.Model):
     ]
     _order = 'id DESC'
 
+    def _compute_website_url(self):
+        super(Article, self)._compute_website_url()
+        for article in self:
+            category_slug = self.env['ir.http']._slug(article.category_id)
+            article_slug = self.env['ir.http']._slug(article)
+            # Generate the website URL
+            article.website_url = "/news/%s/%s" % (category_slug, article_slug)
+
+
     name = fields.Char(string='Title', required=True)
     abstract = fields.Char(string='Abstract')
     content = fields.Html('Content', sanitize=False)
@@ -59,6 +69,8 @@ class Keyword(models.Model):
     _description = 'Keyword'
     _order = 'name'
     _inherit = ['website.seo.metadata']
+    _log_access = False
+
     
     name = fields.Char(string = 'Keyword', required = True)
 

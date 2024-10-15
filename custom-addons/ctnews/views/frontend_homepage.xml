@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<template id="ctnews.homepage" name="Homepage">
+    <t t-call="website.layout">
+        <div class="container">
+            <h1>Latest News</h1>
+            <div class="row">
+                <!-- Loop through the articles and display their info -->
+                <t t-foreach="articles" t-as="article">
+                    <div class="col-md-4">
+                        <div class="news-article">
+                            <h3><t t-esc="article.name"/></h3>
+                            <p><t t-esc="article.abstract"/></p>
+                            <p><strong>Last Modified:</strong> <t t-esc="article.write_date"/></p>
+                            <p><strong>Views:</strong> <t t-esc="article.views"/></p>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</template>
+
+</odoo>

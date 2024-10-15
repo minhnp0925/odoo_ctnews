@@ -2,7 +2,7 @@
 <odoo>
 
 
-<!-- Articles view -->
+<!-- Article views -->
 
 <!-- 
     Convention: view/action_model_type
@@ -59,7 +59,7 @@
 </record>
 
 <record id="view_article_list" model="ir.ui.view">
-    <field name="name">Article List</field>
+    <field name="name">article.list</field>
     <field name="model">ctnews.article</field>
     <field name="priority">99</field>
     <field name="arch" type="xml">
@@ -85,12 +85,76 @@
     <!-- <field name="context">{'create_action': 'website_blog.blog_post_action_add'}</field> -->
 </record>
 
-<menuitem id="menu_blog_post_pages"
+<menuitem id="menu_article"
     parent="website.menu_content"
     sequence="20"
     name="Articles"
     action="action_article"/>
+
+<!-- Category views -->
+<record id="view_category_list" model="ir.ui.view">
+    <field name="name">category.list</field>
+    <field name="model">ctnews.category</field>
+    <field name="type">list</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="name"/>
+        </list>
+    </field>
+</record>
+
+<record id="view_category_form" model="ir.ui.view">
+    <field name="name">category.form</field>
+    <field name="model">ctnews.category</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+        <form string="Category">
+            <sheet>
+                <group>
+                    <field name="name" placeholder="Category Name"/>
+                </group>
+
+                <group string="Keywords">
+                    <field name="keyword_ids">
+                        <list>
+                            <field name="name"/>
+                        </list>
+                        <form>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="action_category" model="ir.actions.act_window">
+    <field name="name">Categories</field>
+    <field name="res_model">ctnews.category</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="view_category_list"/>
+</record>
+
+<menuitem id="menu_category"
+    parent="website.menu_content"
+    sequence="21"
+    name="Categories"
+    action="action_category"/>
+
+<!-- Keyword views -->
+<record id="view_keyword_form" model="ir.ui.view">
+    <field name="name">category.keyword</field>
+    <field name="model">ctnews.keyword</field>
+    <field name="type">form</field>
+</record>
+
+<record id="action_keyword" model="ir.actions.act_window">
+    <field name="name">Keywords</field>
+    <field name="res_model">ctnews.keyword</field>
+    <field name="view_mode">list,form</field>
+</record>
+
 </odoo>
-
-
-<!-- Category view -->
