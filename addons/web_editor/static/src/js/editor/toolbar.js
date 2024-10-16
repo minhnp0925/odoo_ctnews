@@ -56,8 +56,8 @@ export class Toolbar extends Component {
 
         showChecklist: true,
         showColors: true,
-        showFontSize: true,
-        useFontSizeInput: false,
+        showFontSize: false,
+        useFontSizeInput: true,
         showHistory: false,
         showRemoveFormat: true,
 

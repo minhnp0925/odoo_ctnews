@@ -13,7 +13,7 @@
                             <h3><t t-esc="article.name"/></h3>
                             <p><t t-esc="article.abstract"/></p>
                             <p><strong>Last Modified:</strong> <t t-esc="article.write_date"/></p>
-                            <p><strong>Views:</strong> <t t-esc="article.views"/></p>
+                            <p><strong>Views:</strong> <t t-esc="article.view_count"/></p>
                         </div>
                     </div>
                 </t>

@@ -25,9 +25,14 @@
                     <field name="abstract" placeholder="Article Abstract"/>
                     <field name="keyword_ids" widget="many2many_tags"/>
                     <field name="write_date" placeholder="Last Updated"/>
-                    <field name="views" placeholder="View Count"/>
+                    <field name="view_count" placeholder="View Count" readonly="1"/>
                 </group>
                 
+                <group name="article_content" string="Article Content">
+                    <field name="content" widget="html" options="{'toolbar': [['align', ['alignleft', 'aligncenter', 'alignright', 'alignjustify']]]}"/>
+                        <!-- html field, I want to have a wysiwig editor here -->
+                </group>
+
                 <notebook>
                     <page name="seo" string="SEO" groups="base.group_no_one">
                         <group name="default_opengraph">

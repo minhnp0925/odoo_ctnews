@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<template id="ctnews.article_view" name="Article View">
+    <t t-call="website.layout">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mb-3"><t t-esc="article.name"/></h1>
+                    <p class="text-muted">
+                        <t t-esc="article.create_date.strftime('%B %d, %Y')"/>  <!-- Created Date -->
+                        &#160;&#160;
+                        <t t-esc="article.view_count"/> views  <!-- View Count -->
+                    </p>
+                    <p><t t-esc="article.abstract"/></p>  <!-- Article Abstract -->
+                </div>
+            </div>
+            <div class="row">
+                <!-- Left column: Article content -->
+                <div class="col-md-8">
+                    <div class="article-content">
+                        <div t-field="article.content" t-options='{"widget": "html"}'/>  <!-- Article Content -->
+                    </div>
+                </div>
+                <!-- Right column: Most popular articles -->
+                <div class="col-md-4">
+                    <h3>Most Popular Articles</h3>
+                    <ul class="list-group">
+                        <t t-foreach="most_popular" t-as="pop_article">
+                            <li class="list-group-item">
+                                <h5>
+                                    <a t-att-href="pop_article.website_url">
+                                        <t t-esc="pop_article.name"/>
+                                    </a>
+                                </h5>
+                                <p class="text-muted">
+                                    <t t-esc="pop_article.time_ago"/>
+                                    &#160;&#160;
+                                    <t t-esc="pop_article.view_count"/> views
+                                </p>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+    
+</odoo>

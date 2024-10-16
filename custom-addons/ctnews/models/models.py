@@ -54,7 +54,7 @@ class Article(models.Model):
     name = fields.Char(string='Title', required=True)
     abstract = fields.Char(string='Abstract')
     content = fields.Html('Content', sanitize=False)
-    views = fields.Integer('View Count', default=0)
+    view_count = fields.Integer('View Count', default=0)
     active = fields.Boolean(string="Active", default=True)
 
     # Maps to Category

@@ -25,6 +25,7 @@ Long description of module's purpose
         'security/ir.model.access.csv',
         'views/backend_views.xml',
         'views/frontend_homepage.xml',
+        'views/frontend_article.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
