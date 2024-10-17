@@ -1,50 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-<template id="ctnews.article_view" name="Article View">
+<template id="ctnews.category_view" name="Category View">
     <t t-call="website.layout">
-        <div class="container mt-4">
+        <!-- Category Header Section -->
+        <section class="category-header">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="mb-3"><t t-esc="article.name"/></h1> <!-- Article Title -->
-                    <p class="text-muted">
-                        <t t-esc="article.create_date.strftime('%B %d, %Y')"/>  <!-- Created Date -->
-                        &#160;&#160;
-                        <t t-esc="article.view_count"/> views  <!-- View Count -->
-                    </p>
-                    <p><t t-esc="article.abstract" class="font-weight-bold"/></p>  <!-- Article Abstract -->
-                </div>
+            <div class="col-12">
+                <h1 class="category-title">
+                <t t-esc="category.name"/>
+                </h1>
+                <p class="category-description">
+                <t t-esc="category.desc"/>
+                </p>
             </div>
-            <div class="row">
-                <!-- Left column: Article content -->
-                <div class="col-md-8">
-                    <div class="article-content">
-                        <div t-field="article.content" t-options='{"widget": "html"}'/>  <!-- Article Content -->
-                    </div>
-                </div>
-                <!-- Right column: Most popular articles -->
-                <div class="col-md-4">
-                    <h3>Most Popular Articles</h3>
-                    <ul class="list-group">
-                        <t t-foreach="most_popular" t-as="pop_article">
-                            <li class="list-group-item">
-                                <h5>
-                                    <a t-att-href="pop_article.website_url">
-                                        <t t-esc="pop_article.name"/>
-                                    </a>
-                                </h5>
-                                <p class="text-muted">
-                                    <t t-esc="pop_article.time_ago"/>
-                                    &#160;&#160;
-                                    <t t-esc="pop_article.view_count"/> views
-                                </p>
-                            </li>
-                        </t>
-                    </ul>
-                </div>
             </div>
         </div>
+        </section>
+
+        <!-- Featured Articles Section (2 columns) -->
+        <section class="featured-articles">
+            <div class="container">
+                <div class="row">
+                <div class="col-md-6" t-foreach="featured" t-as="article">
+                    <div class="article">
+                    <h2 class="article-title">
+                        <a t-att-href="article.website_url">
+                        <t t-esc="article.name"/>
+                        </a>
+                    </h2>
+                    <p class="article-abstract">
+                        <t t-esc="article.abstract"/>
+                    </p>
+                    <p class="article-meta">
+                        <span><t t-esc="article.create_date.strftime('%Y-%m-%d')"/></span>
+                        <span class="view-count">
+                        <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
+                        </span>
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </section>
+        
+        <!-- Articles Section with 8 cols and 4 cols layout -->
+        <section class="articles-section">
+        <div class="container">
+            <div class="row">
+            <!-- Left column (8 cols): Display articles -->
+            <div class="col-md-8">
+                <div class="row">
+                <div class="col-md-6" t-foreach="articles_in_page" t-as="article">
+                    <div class="article">
+                    <h3 class="article-title">
+                        <a t-att-href="article.website_url">
+                        <t t-esc="article.name"/>
+                        </a>
+                    </h3>
+                    <p class="article-meta">
+                        <span><t t-esc="article.create_date.strftime('%Y-%m-%d')"/></span>
+                        <span class="view-count">
+                        <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
+                        </span>
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+            <!-- Right column (4 cols): Display top stories and keywords -->
+            <div class="col-md-4">
+                <!-- Top Stories -->
+                <h4>Top Stories</h4>
+                <ul class="top-stories">
+                <li t-foreach="top_stories" t-as="article">
+                    <a t-att-href="article.website_url">
+                    <t t-esc="article.name"/>
+                    </a>
+                    <span class="view-count">
+                    <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
+                    </span>
+                </li>
+                </ul>
+    
+                <!-- Keywords -->
+                <h4>Keywords</h4>
+                <ul class="keywords-list">
+                <li t-foreach="keywords" t-as="keyword">
+                    <t t-esc="keyword.name"/>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </section>
+    
+        <!-- Pagination Section -->
+        <section class="pagination-section">
+        <div class="container">
+            <div class="row">
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item" t-if="page &gt; 1">
+                    <a class="page-link" t-attf-href="?page=#{page - 1}" aria-label="Previous">
+                        <span aria-hidden="true">Prev</span>
+                    </a>
+                    </li>
+                    <li class="page-item" t-foreach="range(1, total_pages + 1)" t-as="pagenum">
+                    <a class="page-link" t-attf-href="?page=#{pagenum}">
+                        <t t-esc="pagenum"/>
+                    </a>
+                    </li>
+                    <li class="page-item" t-if="page &lt; total_pages">
+                    <a class="page-link" t-attf-href="?page=#{page + 1}" aria-label="Next">
+                        <span aria-hidden="true">Next</span>
+                    </a>
+                    </li>
+                </ul>
+                </nav>
+                <p>Page <t t-esc="page"/> of <t t-esc="total_pages"/></p>
+            </div>
+            </div>
+        </div>
+        </section>
     </t>
 </template>
-    
+
 </odoo>

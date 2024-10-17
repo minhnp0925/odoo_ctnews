@@ -18,6 +18,9 @@
                     <field name="is_published" widget="website_redirect_button"/>
                 </div>
                 <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                <group name="publication" string="Publication status">
+                    <field name="website_published" string="Is published?" widget="boolean_toggle" options="{'color': 'green'}" />
+                </group>
                 <group name="article_details" string="Article Details">
                     <field name="category_id"/>
                     <field name="active" invisible="1"/>
@@ -117,6 +120,7 @@
             <sheet>
                 <group>
                     <field name="name" placeholder="Category Name"/>
+                    <field name="desc" placeholder="Category Description"/>
                 </group>
 
                 <group string="Keywords">

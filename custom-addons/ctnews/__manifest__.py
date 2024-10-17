@@ -26,6 +26,7 @@ Long description of module's purpose
         'views/backend_views.xml',
         'views/frontend_homepage.xml',
         'views/frontend_article.xml',
+        'views/frontend_category.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
