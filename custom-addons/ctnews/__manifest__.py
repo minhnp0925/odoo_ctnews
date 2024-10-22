@@ -32,5 +32,34 @@ Long description of module's purpose
     'demo': [
         'demo/demo.xml',
     ],
+
+    'assets': {
+        'ctnews.assets_frontend': [
+            'ctnews/static/js/vendor/*',
+            'ctnews/static/js/*.js',
+
+            'ctnews/static/scss/_color.scss',
+            'ctnews/static/scss/_variables.scss',
+            'ctnews/static/scss/_mixins.scss',
+            'ctnews/static/scss/_overlay.scss',
+            'ctnews/static/scss/_common.scss',
+
+            'ctnews/static/scss/_headerMenu.scss',
+            'ctnews/static/scss/_trending.scss',
+            'ctnews/static/scss/_wecky-new.scss',
+            'ctnews/static/scss/_whats-new.scss',
+            'ctnews/static/scss/_wecky2-new.scss',
+            'ctnews/static/scss/_youtube.scss',
+            'ctnews/static/scss/_recent-articles.scss',
+            'ctnews/static/scss/_about-page.scss',
+            'ctnews/static/scss/_footer.scss',
+            'ctnews/static/scss/_services.scss',
+            'ctnews/static/scss/_blog_page.scss',
+            'ctnews/static/scss/_contact.scss',
+            'ctnews/static/scss/_bradcam.scss',
+            'ctnews/static/scss/_extend.scss',
+            'ctnews/static/scss/_elements.scss',
+        ],
+    },
 }
 
