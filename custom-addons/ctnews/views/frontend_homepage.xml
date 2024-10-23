@@ -2,18 +2,16 @@
 <odoo>
 
 <template id="ctnews.homepage" name="Homepage">
-    <t t-call-assets="ctnews.assets_frontend"/>
     <t t-call="website.layout">
         <!-- Trending Area Start -->
         <div class="trending-area fix">
             <div class="container">
                 <div class="trending-main">
                     <!-- Trending Tittle -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-12">
                             <div class="trending-tittle">
                                 <strong>Trending now</strong>
-                                <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                                 <div class="trending-animated">
                                     <ul id="js-news" class="js-hidden">
                                         <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
@@ -24,7 +22,7 @@
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Top -->
@@ -129,10 +127,10 @@
             </div>
         </div>
         <!-- Trending Area End -->
-        <!--   Weekly-News start -->
-        <div class="weekly-news-area pt-50">
+        <!--   Weekly2-News start -->
+        <div class="weekly2-news-area  weekly2-pading gray-bg">
             <div class="container">
-                <div class="weekly-wrapper">
+                <div class="weekly2-wrapper">
                     <!-- section Tittle -->
                     <div class="row">
                         <div class="col-lg-12">
@@ -143,50 +141,63 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="weekly-news-active dot-style d-flex dot-style">
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                        <img src="/ctnews/static/src/img/news/weeklyNews2.jpg" alt="weeklyNews2"/>
+                            <div class="weekly2-news-active dot-style d-flex dot-style">
+                                <div class="weekly2-single">
+                                    <div class="weekly2-img">
+                                        <img src="/ctnews/static/src/img/news/weekly2News1.jpg" alt=""/>
                                     </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
+                                    <div class="weekly2-caption">
+                                        <span class="color1">Corporate</span>
+                                        <p>25 Jan 2020</p>
                                         <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
                                     </div>
                                 </div> 
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                            <img src="/ctnews/static/src/img/news/weeklyNews1.jpg" alt=""/>
+                                <div class="weekly2-single">
+                                    <div class="weekly2-img">
+                                        <img src="/ctnews/static/src/img/news/weekly2News2.jpg" alt=""/>
                                     </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
+                                    <div class="weekly2-caption">
+                                        <span class="color1">Event night</span>
+                                        <p>25 Jan 2020</p>
+                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                    </div>
+                                </div> 
+                                <div class="weekly2-single">
+                                    <div class="weekly2-img">
+                                        <img src="/ctnews/static/src/img/news/weekly2News3.jpg" alt=""/>
+                                    </div>
+                                    <div class="weekly2-caption">
+                                        <span class="color1">Corporate</span>
+                                        <p>25 Jan 2020</p>
                                         <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
                                     </div>
                                 </div>
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                            <img src="/ctnews/static/src/img/news/weeklyNews3.jpg" alt=""/>
+                                    <div class="weekly2-single">
+                                    <div class="weekly2-img">
+                                        <img src="/ctnews/static/src/img/news/weekly2News4.jpg" alt=""/>
                                     </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
+                                    <div class="weekly2-caption">
+                                        <span class="color1">Event time</span>
+                                        <p>25 Jan 2020</p>
                                         <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
                                     </div>
-                                </div>
-                                <div class="weekly-single">
-                                    <div class="weekly-img">
-                                        <img src="/ctnews/static/src/img/news/weeklyNews1.jpg" alt=""/>
+                                </div> 
+                                    <div class="weekly2-single">
+                                    <div class="weekly2-img">
+                                        <img src="/ctnews/static/src/img/news/weekly2News4.jpg" alt=""/>
                                     </div>
-                                    <div class="weekly-caption">
-                                        <span class="color1">Strike</span>
+                                    <div class="weekly2-caption">
+                                        <span class="color1">Corporate</span>
+                                        <p>25 Jan 2020</p>
                                         <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>           
-        <!-- End Weekly-News -->
         <!-- Whats New Start -->
         <section class="whats-news-area pt-50 pb-20">
             <div class="container">
@@ -195,7 +206,7 @@
                     <div class="row d-flex justify-content-between">
                         <div class="col-lg-3 col-md-3">
                             <div class="section-tittle mb-30">
-                                <h3>Whats New</h3>
+                                <h3>What's New</h3>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -585,77 +596,7 @@
             </div>
         </section>
         <!-- Whats New End -->
-        <!--   Weekly2-News start -->
-        <div class="weekly2-news-area  weekly2-pading gray-bg">
-            <div class="container">
-                <div class="weekly2-wrapper">
-                    <!-- section Tittle -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>Weekly Top News</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="weekly2-news-active dot-style d-flex dot-style">
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News1.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News2.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Event night</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News3.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                    <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News4.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Event time</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                                    <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News4.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>           
+        
         <!-- End Weekly-News -->
         <!-- Start Youtube -->
         <!-- <div class="youtube-area video-padding">
@@ -735,64 +676,7 @@
             </div>
         </div>  -->
         <!-- End Start youtube -->
-        <!--  Recent Articles start -->
-        <div class="recent-articles">
-            <div class="container">
-                <div class="recent-wrapper">
-                    <!-- section Tittle -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-tittle mb-30">
-                                <h3>Recent Articles</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="recent-active dot-style d-flex dot-style">
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="/ctnews/static/src/img/news/recent1.jpg" alt=""/>
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="/ctnews/static/src/img/news/recent2.jpg" alt=""/>
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="/ctnews/static/src/img/news/recent3.jpg" alt=""/>
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                                <div class="single-recent mb-100">
-                                    <div class="what-img">
-                                        <img src="/ctnews/static/src/img/news/recent2.jpg" alt=""/>
-                                    </div>
-                                    <div class="what-cap">
-                                        <span class="color1">Night party</span>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>           
-        <!--Recent Articles End -->
+        
         <!--Start pagination -->
         <div class="pagination-area pb-45 text-center">
             <div class="container">
@@ -814,6 +698,46 @@
             </div>
         </div>
         <!-- End pagination  -->
+        <!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="/ctnews/static/src/js/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="/ctnews/static/src/js/jquery.js"></script>
+        <script src="/ctnews/static/src/js/popper.min.js"></script>
+        <script src="/ctnews/static/src/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="/ctnews/static/src/js/jquery.slicknav.min.js"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="/ctnews/static/src/js/owl.carousel.min.js"></script>
+        <script src="/ctnews/static/src/js/slick.min.js"></script>
+        <!-- Date Picker -->
+        <script src="/ctnews/static/src/js/gijgo.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="/ctnews/static/src/js/wow.min.js"></script>
+		<script src="/ctnews/static/src/js/animated.headline.js"></script>
+        <script src="/ctnews/static/src/js/jquery.magnific-popup.js"></script>
+
+        <!-- Breaking New Pluging -->
+        <script src="/ctnews/static/src/js/jquery.ticker.js"></script>
+        <script src="/ctnews/static/src/js/site.js"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="/ctnews/static/src/js/jquery.scrollUp.min.js"></script>
+        <script src="/ctnews/static/src/js/jquery.nice-select.min.js"></script>
+		<script src="/ctnews/static/src/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="/ctnews/static/src/js/contact.js"></script>
+        <script src="/ctnews/static/src/js/jquery.form.js"></script>
+        <script src="/ctnews/static/src/js/jquery.validate.min.js"></script>
+        <script src="/ctnews/static/src/js/mail-script.js"></script>
+        <script src="/ctnews/static/src/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="/ctnews/static/src/js/plugins.js"></script>
+        <script src="/ctnews/static/src/js/main.js"></script>
     </t>
 </template>
 

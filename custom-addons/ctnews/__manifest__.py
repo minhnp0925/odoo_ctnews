@@ -34,10 +34,8 @@ Long description of module's purpose
     ],
 
     'assets': {
-        'ctnews.assets_frontend': [
-            'ctnews/static/src/js/vendor/*',
-            'ctnews/static/src/js/*.js',
-            
+        'web.assets_frontend': [
+            'ctnews/static/src/css/*.css',
             'ctnews/static/src/scss/_color.scss',
             'ctnews/static/src/scss/_variables.scss',
             'ctnews/static/src/scss/_mixins.scss',
@@ -59,7 +57,8 @@ Long description of module's purpose
             'ctnews/static/src/scss/_bradcam.scss',
             'ctnews/static/src/scss/_extend.scss',
             'ctnews/static/src/scss/_elements.scss',
-        ],
+            
+        ], 
     },
 }
 
