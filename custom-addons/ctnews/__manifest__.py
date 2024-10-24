@@ -57,6 +57,7 @@ Long description of module's purpose
             'ctnews/static/src/scss/_bradcam.scss',
             'ctnews/static/src/scss/_extend.scss',
             'ctnews/static/src/scss/_elements.scss',
+            'ctnews/static/src/scss/_article.scss'
             
         ], 
     },

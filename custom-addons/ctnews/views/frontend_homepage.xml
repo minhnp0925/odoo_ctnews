@@ -3,12 +3,25 @@
 
 <template id="ctnews.homepage" name="Homepage">
     <t t-call="website.layout">
+        <!-- Preloader Start -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img t-attf-src="ctnews/static/src/img/logo/logo.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Preloader End -->
+
         <!-- Trending Area Start -->
         <div class="trending-area fix">
             <div class="container">
-                <div class="trending-main">
+                <div class="trending-main pt-2">
                     <!-- Trending Tittle -->
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-lg-12">
                             <div class="trending-tittle">
                                 <strong>Trending now</strong>
@@ -18,109 +31,72 @@
                                         <li class="news-item">Spondon IT sit amet, consectetur.......</li>
                                         <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
                                     </ul>
-                                </div>
-                                
+                                </div>          
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+                    
                     <div class="row">
                         <div class="col-lg-8">
                             <!-- Trending Top -->
                             <div class="trending-top mb-30">
                                 <div class="trend-top-img">
-                                    <img src="/ctnews/static/src/img/trending/trending_top.jpg" alt=""/>
+                                    <img t-attf-src="/ctnews/static/src/img/trending/trending_top.jpg" alt=""/>
                                     <div class="trend-top-cap">
-                                        <span>Appetizers</span>
-                                        <h2><a href="details.html">Welcome To The Best Model Winner<br/> Contest At Look of the year</a></h2>
+                                        <span class="cool">
+                                            <t t-esc="trending_top[0]['category_name']"></t>
+                                        </span>
+                                        <h2><a t-att-href="trending_top[0]['website_url']">
+                                            <t t-esc="trending_top[0]['name']"></t>    
+                                        </a></h2>
+                                        <p t-esc="trending_top[0]['abstract']"></p>
                                     </div>
                                 </div>
                             </div>
                             <!-- Trending Bottom -->
                             <div class="trending-bottom">
                                 <div class="row">
-                                    <div class="col-lg-4">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img src="/ctnews/static/src/img/trending/trending_bottom1.jpg" alt=""/>
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color1">Lifestyle</span>
-                                            <h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="single-bottom mb-35">
-                                            <div class="trend-bottom-img mb-30">
-                                                <img src="/ctnews/static/src/img/trending/trending_bottom2.jpg" alt=""/>
-                                            </div>
-                                            <div class="trend-bottom-cap">
-                                                <span class="color2">Sports</span>
-                                                <h4><h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4></h4>
+                                    <t t-foreach="trending_bottom" t-as="article">
+                                        <div class="col-lg-4">
+                                            <div class="single-bottom mb-35">
+                                                <div class="trend-bottom-img mb-30">
+                                                    <img t-attf-src="/ctnews/static/src/img/trending/trending_bottom1.jpg" alt=""/>
+                                                </div>
+                                                <div class="trend-bottom-cap">
+                                                    <span class="color1">
+                                                        <t t-esc="article['category_name']" />  <!-- Display category name -->
+                                                    </span>
+                                                    <h4>
+                                                        <a t-att-href="article['website_url']">
+                                                            <t t-esc="article['name']" />  <!-- Display article title -->
+                                                        </a>
+                                                    </h4>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="single-bottom mb-35">
-                                            <div class="trend-bottom-img mb-30">
-                                                <img src="/ctnews/static/src/img/trending/trending_bottom3.jpg" alt=""/>
-                                            </div>
-                                            <div class="trend-bottom-cap">
-                                                <span class="color3">Travels</span>
-                                                <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </t>
                                 </div>
                             </div>
                         </div>
-                        <!-- Riht content -->
+                        <!-- Trending right -->
                         <div class="col-lg-4">
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="/ctnews/static/src/img/trending/right1.jpg" alt=""/>
+                            <t t-foreach="trending_side" t-as="article">
+                                <div class="trand-right-single d-flex">
+                                    <div class="trand-right-img">
+                                        <img t-attf-src="/ctnews/static/src/img/trending/right1.jpg" alt=""/>
+                                    </div>
+                                    <div class="trand-right-cap">
+                                        <span class="color1">
+                                            <t t-esc="article['category_name']" />  <!-- Display category name -->
+                                        </span>
+                                        <h4>
+                                            <a t-att-href="article['website_url']">
+                                                <t t-esc="article['name']" />  <!-- Display article title -->
+                                            </a>
+                                        </h4>
+                                    </div>
                                 </div>
-                                <div class="trand-right-cap">
-                                    <span class="color1">Concert</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="/ctnews/static/src/img/trending/right2.jpg" alt=""/>
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color3">sea beach</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="/ctnews/static/src/img/trending/right3.jpg" alt=""/>
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color2">Bike Show</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div> 
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="/ctnews/static/src/img/trending/right4.jpg" alt=""/>
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color4">See beach</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="trand-right-single d-flex">
-                                <div class="trand-right-img">
-                                    <img src="/ctnews/static/src/img/trending/right5.jpg" alt=""/>
-                                </div>
-                                <div class="trand-right-cap">
-                                    <span class="color1">Skeping</span>
-                                    <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
+                            </t>
                         </div>
                     </div>
                 </div>
@@ -142,56 +118,18 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="weekly2-news-active dot-style d-flex dot-style">
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News1.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News2.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Event night</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News3.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div>
+                                <t t-foreach="weekly_top" t-as="article">
                                     <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News4.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Event time</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
-                                    <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="/ctnews/static/src/img/news/weekly2News4.jpg" alt=""/>
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">Corporate</span>
-                                        <p>25 Jan 2020</p>
-                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                    </div>
-                                </div> 
+                                        <div class="weekly2-img">
+                                            <img t-attf-src="/ctnews/static/src/img/news/weekly2News1.jpg" alt=""/>
+                                        </div>
+                                        <div class="weekly2-caption">
+                                            <span class="color1"><t t-esc="article['category_name']"></t></span>
+                                            <p><t t-esc="article['create_date'].strftime('%Y-%m-%d')"/></p>
+                                            <h4><a t-att-href="article['website_url']"><t t-esc="article['name']"/></a></h4>
+                                        </div>
+                                    </div> 
+                                </t>
                             </div>
                         </div>
                     </div>
@@ -237,7 +175,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -248,7 +186,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -259,7 +197,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -270,7 +208,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -288,18 +226,18 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                                        <span class="color1">Day party</span>
+                                                        <h4><a href="#">Welcome To The Second Best Model  Winner Contest</a></h4>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -310,7 +248,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -321,7 +259,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -339,7 +277,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -350,7 +288,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -361,7 +299,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -372,7 +310,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -390,7 +328,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -401,7 +339,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -412,7 +350,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -423,7 +361,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -441,7 +379,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -452,7 +390,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -463,7 +401,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -474,7 +412,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -492,7 +430,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews1.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -503,7 +441,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews2.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -514,7 +452,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews3.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -525,7 +463,7 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
-                                                        <img src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
+                                                        <img t-attf-src="/ctnews/static/src/img/news/whatNews4.jpg" alt=""/>
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1">Night party</span>
@@ -551,7 +489,7 @@
                         <div class="single-box">
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="#"><img src="/ctnews/static/src/img/news/icon-fb.png" alt=""/></a>
+                                    <a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-fb.png" alt=""/></a>
                                 </div>
                                 <div class="follow-count">  
                                     <span>8,045</span>
@@ -560,7 +498,7 @@
                             </div> 
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="#"><img src="/ctnews/static/src/img/news/icon-tw.png" alt=""/></a>
+                                    <a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-tw.png" alt=""/></a>
                                 </div>
                                 <div class="follow-count">
                                     <span>8,045</span>
@@ -569,7 +507,7 @@
                             </div>
                                 <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="#"><img src="/ctnews/static/src/img/news/icon-ins.png" alt=""/></a>
+                                    <a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-ins.png" alt=""/></a>
                                 </div>
                                 <div class="follow-count">
                                     <span>8,045</span>
@@ -578,7 +516,7 @@
                             </div>
                             <div class="follow-us d-flex align-items-center">
                                 <div class="follow-social">
-                                    <a href="#"><img src="/ctnews/static/src/img/news/icon-yo.png" alt=""/></a>
+                                    <a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-yo.png" alt=""/></a>
                                 </div>
                                 <div class="follow-count">
                                     <span>8,045</span>
@@ -589,7 +527,7 @@
                     </div>
                     <!-- New Poster -->
                     <div class="news-poster d-none d-lg-block">
-                        <img src="/ctnews/static/src/img/news/news_card.jpg" alt=""/>
+                        <img t-attf-src="/ctnews/static/src/img/news/news_card.jpg" alt=""/>
                     </div>
                 </div>
                 </div>
@@ -599,7 +537,7 @@
         
         <!-- End Weekly-News -->
         <!-- Start Youtube -->
-        <!-- <div class="youtube-area video-padding">
+        <!-- <div class="youtube-area video-padding weekly2-pading gray-bg">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -678,7 +616,7 @@
         <!-- End Start youtube -->
         
         <!--Start pagination -->
-        <div class="pagination-area pb-45 text-center">
+        <!-- <div class="pagination-area pb-45 text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -696,7 +634,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- End pagination  -->
         <!-- JS here -->
 	

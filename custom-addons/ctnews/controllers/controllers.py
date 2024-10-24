@@ -11,6 +11,7 @@ from odoo.http import request
 from odoo.tools import html2plaintext
 from odoo.tools.misc import get_lang
 from odoo.tools import sql
+from datetime import timedelta
 
 class Ctnews(http.Controller):
     _articles_per_page = 12
@@ -23,12 +24,31 @@ class Ctnews(http.Controller):
     
     @http.route('/news', auth='public', website=True)
     def get_latest_news(self, **kwargs):
-        # Fetch the 6 newest articles
-        articles = request.env['ctnews.article'].search([], order="create_date desc", limit=5)
+        # Fetch the 9 newest articles
+        Article = request.env['ctnews.article']
+        trending_top = Article.search_read(fields=['name','website_url', 'category_name', 'abstract'], limit=1, order="create_date DESC")
+        trending_bottom = Article.search_read(fields=['name','website_url', 'category_name'], limit=3, offset=1, order ="create_date DESC")
+        trending_side = Article.search_read(fields=['name', 'website_url', 'category_name'], limit=5, offset=4, order="create_date DESC")
+
+        # Weekly top
+        today = fields.Date.context_today(Article)  # Today's date
+        seven_days_ago = today - timedelta(days=7)  # 7 days before today
+
+        # Fetch the top 5 articles with the highest view count in the last 7 days
+        weekly_top = Article.search_read(
+            [('create_date', '>=', seven_days_ago)],  # Filter by articles in the last 7 days
+            fields=['name', 'website_url', 'category_name', 'create_date'],  # Fields to retrieve
+            order='view_count DESC',  # Order by view count descending
+            limit=5  # Limit to 5 articles
+        )
 
         # Pass the articles to the template
         return request.render('ctnews.homepage', {
-            'articles': articles
+            'trending_top': trending_top,
+            'trending_bottom': trending_bottom,
+            'trending_side': trending_side,
+
+            'weekly_top': weekly_top,
         })
 
     @http.route('/news/<model("ctnews.category"):category>', type='http', auth='public', website=True, sitemap=True)

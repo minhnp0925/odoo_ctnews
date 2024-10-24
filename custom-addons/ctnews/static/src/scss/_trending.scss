@@ -56,11 +56,14 @@
                         font-weight: 700;
                         line-height:1.3;
                         &:hover{
-                            //color: $theme-color;
+                            color: $theme-color;
                         }
                         
 
                    }
+                }
+                p{
+                    color: #fff
                 }
             }
         }
@@ -140,6 +143,19 @@
                 a{
                     font-weight: 500;
                     line-height:1.4;
+                    &:hover{
+                        color: $theme-color;
+                    }
+                }
+            }
+            h5{     
+                font-size: 14px; 
+                @media #{$lg}{
+                    font-size:12px;
+                }
+                a{
+                    font-weight: 500;
+                    line-height:1.3;
                     &:hover{
                         color: $theme-color;
                     }

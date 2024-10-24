@@ -3,48 +3,151 @@
 
 <template id="ctnews.article_view" name="Article View">
     <t t-call="website.layout">
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="mb-3"><t t-esc="article.name"/></h1>
-                    <p class="text-muted">
-                        <t t-esc="article.create_date.strftime('%B %d, %Y')"/>  <!-- Created Date -->
-                        &#160;&#160;
-                        <t t-esc="article.view_count"/> views  <!-- View Count -->
-                    </p>
-                    <p><t t-esc="article.abstract"/></p>  <!-- Article Abstract -->
-                </div>
-            </div>
-            <div class="row">
-                <!-- Left column: Article content -->
-                <div class="col-md-8">
-                    <div class="article-content">
-                        <div t-field="article.content" t-options='{"widget": "html"}'/>  <!-- Article Content -->
+        <div id="preloader-active">
+            <div class="preloader d-flex align-items-center justify-content-center">
+                <div class="preloader-inner position-relative">
+                    <div class="preloader-circle"></div>
+                    <div class="preloader-img pere-text">
+                        <img t-attf-src="/ctnews/static/src/img/logo/logo.png" alt=""/>
                     </div>
-                </div>
-                <!-- Right column: Most popular articles -->
-                <div class="col-md-4">
-                    <h3>Most Popular Articles</h3>
-                    <ul class="list-group">
-                        <t t-foreach="most_popular" t-as="pop_article">
-                            <li class="list-group-item">
-                                <h5>
-                                    <a t-att-href="pop_article.website_url">
-                                        <t t-esc="pop_article.name"/>
-                                    </a>
-                                </h5>
-                                <p class="text-muted">
-                                    <t t-esc="pop_article.time_ago"/>
-                                    &#160;&#160;
-                                    <t t-esc="pop_article.view_count"/> views
-                                </p>
-                            </li>
-                        </t>
-                    </ul>
                 </div>
             </div>
         </div>
-    </t>
+        
+        <div class="container">
+            <div class="news-cover">
+                <div class="row">
+                    <!-- Title -->
+                    <div class="col-md-9">
+                        <h1 class="display-4 pl-2" t-esc="article.name"></h1>
+                    </div>
+                </div>
+                <div class="row align-items-center px-3">
+                    <!-- Title and Subtitle -->
+                    <div class="col-md-4">
+                        <p class="lead text-primary" t-esc="article.abstract"></p>
+                        <p class="article-meta">
+                            <span>
+                                <i class="fa fa-calendar"></i> <t t-esc="article.create_date.strftime('%Y-%m-%d')"/>
+                            </span>
+                            <![CDATA[&nbsp;&nbsp;]]>
+                            <span class="view-count">
+                                <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
+                            </span>
+                        </p>
+                    </div>
+                    <!-- Cover Image -->
+                    <div class="col-md-8 d-flex justify-content-center align-items-center">
+                        <img class="img-fluid rounded" t-attf-src="/ctnews/static/src/img/trending/trending_top.jpg" alt=""/>
+                    </div>
+                </div>
+            </div>
+            
+           <div class="row">
+                <div class="col-lg-8">
+                    <!-- Trending Tittle -->
+                    <div class="about-right mb-90">
+                        <div class="about-prea article-content" t-field='article.content' t-options='{"widget": "html"}'>        
+                        </div> 
+
+                        <div class="social-share pt-30">
+                            <div class="section-tittle">
+                                <h3 class="mr-20">Share:</h3>
+                                <ul>
+                                    <li><a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-ins.png" alt=""/></a></li>
+                                    <li><a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-fb.png" alt=""/></a></li>
+                                    <li><a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-tw.png" alt=""/></a></li>
+                                    <li><a href="#"><img t-attf-src="/ctnews/static/src/img/news/icon-yo.png" alt=""/></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <!-- New Poster -->
+                    <div class="news-poster d-none d-lg-block mb-30">
+                        <img t-attf-src="/ctnews/static/src/img/news/news_card.jpg" alt=""/>
+                    </div>
+                    <!-- Most popular section -->
+                    
+                    <div class="card rounded sticky-top mb-2">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Most popular</h3>
+
+                            <t t-foreach="most_popular" t-as="article">
+                                <div class="trand-right-single d-flex mb-3">
+                                    <div class="trand-right-cap pl-2">
+                                        <div class="d-flex justify-content-between">
+                                            <span class="color1">
+                                                <t t-esc="article['category_name']"/>  <!-- Display category name -->
+                                            </span>
+                                            <span class="text-muted mb-0 pb-0">
+                                                <i class="fa fa-calendar"></i> <t t-esc="article.time_ago"/>
+                                                <![CDATA[&nbsp;&nbsp;]]>
+                                                <i class="fa fa-eye"></i> <t t-esc="article.view_count"/> views
+                                            </span>
+                                        </div>
+                                        <h6>
+                                            <a t-att-href="article['website_url']">
+                                                <t t-esc="article['name']"/>  <!-- Display article title -->
+                                            </a>
+                                        </h6>
+                                        
+                                    </div>
+                                </div>
+                                <!-- Add a separator bar between articles, but not after the last one -->
+                                <t t-set="article_num" t-value="len(most_popular)"></t>
+                                <t t-if="article_index + 1 &lt; article_num ">
+                                    <hr class="my-3"/>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="/ctnews/static/src/js/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="/ctnews/static/src/js/jquery.js"></script>
+        <script src="/ctnews/static/src/js/popper.min.js"></script>
+        <script src="/ctnews/static/src/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="/ctnews/static/src/js/jquery.slicknav.min.js"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="/ctnews/static/src/js/owl.carousel.min.js"></script>
+        <script src="/ctnews/static/src/js/slick.min.js"></script>
+        <!-- Date Picker -->
+        <script src="/ctnews/static/src/js/gijgo.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="/ctnews/static/src/js/wow.min.js"></script>
+		<script src="/ctnews/static/src/js/animated.headline.js"></script>
+        <script src="/ctnews/static/src/js/jquery.magnific-popup.js"></script>
+
+        <!-- Breaking New Pluging -->
+        <script src="/ctnews/static/src/js/jquery.ticker.js"></script>
+        <script src="/ctnews/static/src/js/site.js"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="/ctnews/static/src/js/jquery.scrollUp.min.js"></script>
+        <script src="/ctnews/static/src/js/jquery.nice-select.min.js"></script>
+		<script src="/ctnews/static/src/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="/ctnews/static/src/js/contact.js"></script>
+        <script src="/ctnews/static/src/js/jquery.form.js"></script>
+        <script src="/ctnews/static/src/js/jquery.validate.min.js"></script>
+        <script src="/ctnews/static/src/js/mail-script.js"></script>
+        <script src="/ctnews/static/src/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="/ctnews/static/src/js/plugins.js"></script>
+        <script src="/ctnews/static/src/js/main.js"></script>
+    </t> 
 </template>
     
 </odoo>

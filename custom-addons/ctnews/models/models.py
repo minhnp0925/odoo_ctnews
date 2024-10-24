@@ -90,6 +90,12 @@ class Article(models.Model):
     # Maps to Category
     category_id = fields.Many2one(comodel_name='ctnews.category', string='Category', required=True, ondelete='cascade',
                                   default=lambda self: self.env['ctnews.category'].search([], limit=1))
+    
+    # Get category name
+    category_name = fields.Char(compute='_compute_category_name')
+    def _compute_category_name(self):
+        for record in self:
+            record.category_name = record.category_id.name
 
     # Maps to Keyword
     keyword_ids = fields.Many2many(comodel_name='ctnews.keyword', string='Keywords in Article')
