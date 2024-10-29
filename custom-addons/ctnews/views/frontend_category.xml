@@ -4,127 +4,111 @@
 <template id="ctnews.category_view" name="Category View">
     <t t-call="website.layout">
         <!-- Category Header Section -->
-        <section class="category-header">
-        <div class="container">
-            <div class="row">
-            <div class="col-12">
-                <h1 class="category-title">
-                <t t-esc="category.name"/>
-                </h1>
-                <p class="category-description">
-                <t t-esc="category.desc"/>
+        <section class="category-section text-white mb-30">
+            <div class="container py-5">
+                <!-- Category Title -->
+                <h1 class="display-1 fw-bold text-uppercase"><t t-esc="category.name"></t></h1>
+        
+                <!-- Category Description -->
+                <p class="lead mt-4">
+                    <t t-esc="category.desc"></t>
                 </p>
-            </div>
-            </div>
-        </div>
-        </section>
-
-        <!-- Featured Articles Section (2 columns) -->
-        <section class="featured-articles">
-            <div class="container">
-                <div class="row">
-                <div class="col-md-6" t-foreach="featured" t-as="article">
-                    <div class="article">
-                    <h2 class="article-title">
-                        <a t-att-href="article.website_url">
-                        <t t-esc="article.name"/>
-                        </a>
-                    </h2>
-                    <p class="article-abstract">
-                        <t t-esc="article.abstract"/>
-                    </p>
-                    <p class="article-meta">
-                        <span><t t-esc="article.create_date.strftime('%Y-%m-%d')"/></span>
-                        <span class="view-count">
-                        <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
-                        </span>
-                    </p>
+        
+                <!-- Category Keywords -->
+                <div class="mt-4">
+                    <span class="fw-bold text-muted">Keywords:</span>
+                    <div class="d-inline-flex flex-wrap mt-2">
+                        <a href="#" class="category-link">Buying Guides</a>
+                        <a href="#" class="category-link">Gift Guide</a>
+                        <a href="#" class="category-link">Laptops</a>
+                        <a href="#" class="category-link">Phones</a>
+                        <a href="#" class="category-link">Headphones</a>
+                        <a href="#" class="category-link">Tablets</a>
+                        <a href="#" class="category-link">Smart Home</a>
+                        <a href="#" class="category-link">Smartwatches</a>
+                        <a href="#" class="category-link">Speakers</a>
+                        <a href="#" class="category-link">Drones</a>
+                        <a href="#" class="category-link">Gaming</a>
+                        <a href="#" class="category-link">Accessories</a>
+                        <a href="#" class="category-link">TV Boxes</a>
+                        <a href="#" class="category-link">Cars</a>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <!-- Trending Area Start -->
+        <section class="trending-area fix mb-30">
+            <div class="container">
+                <div class="trending-main pt-2">
+                    <div class="row">
+                        <t t-foreach="featured_articles" t-as="article">
+                            <div class="col-lg-6">
+                                <div class="trending-top mb-2">
+                                    <div class="trend-top-img">
+                                        <img t-attf-src="/ctnews/static/src/img/trending/trending_top.jpg" alt=""/>
+                                        <div class="trend-top-cap">
+                                            <h2><a t-att-href="article['website_url']">
+                                                <t t-esc="article['name']"></t>    
+                                            </a></h2>
+                                            <p t-esc="article['abstract']"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
                 </div>
             </div>
-            </section>
+        </section>
         
         <!-- Articles Section with 8 cols and 4 cols layout -->
-        <section class="articles-section">
-        <div class="container">
-            <div class="row">
-            <!-- Left column (8 cols): Display articles -->
-            <div class="col-md-8">
+        <section class="article-section">
+            <div class="container">
                 <div class="row">
-                <div class="col-md-6" t-foreach="articles_in_page" t-as="article">
-                    <div class="article">
-                    <h3 class="article-title">
-                        <a t-att-href="article.website_url">
-                        <t t-esc="article.name"/>
-                        </a>
-                    </h3>
-                    <p class="article-meta">
-                        <span><t t-esc="article.create_date.strftime('%Y-%m-%d')"/></span>
-                        <span class="view-count">
-                        <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
-                        </span>
-                    </p>
+                    <!-- Left column (8 cols): Display articles -->
+                    <div class="col-lg-8 mb-35">
+                        <t t-foreach="articles_in_page" t-as="article">  
+                            <div class="col-lg-6">
+                                <div class="article-cover-img mb-30">
+                                    <img t-attf-src="/ctnews/static/src/img/trending/trending_bottom1.jpg" alt=""/>
+                                </div>
+                                <div class="article-bottom-cap">
+                                    <h4>
+                                        <a t-att-href="article['website_url']">
+                                            <t t-esc="article['name']" />  <!-- Display article title -->
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </t>  
+                    </div>
+            
+                    <!-- Right column (4 cols): Display top stories and keywords -->
+                    <div class="col-lg-4">
+                        <h3>Top stories</h3>
+                        <t t-foreach="top_stories" t-as="article">
+                            <div class="article-side-list d-flex">
+                                <div class="trand-right-img">
+                                    <img t-attf-src="/ctnews/static/src/img/trending/right1.jpg" alt=""/>
+                                </div>
+                                <div class="trand-right-cap">
+                                    <h5>
+                                        <a t-att-href="article['website_url']">
+                                            <t t-esc="article['name']" />  <!-- Display article title -->
+                                        </a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <!-- Add a separator bar between articles, but not after the last one -->
+                            <t t-set="article_num" t-value="len(top_stories)"></t>
+                            <t t-if="article_index + 1 &lt; article_num ">
+                                <hr class="my-3"/>
+                            </t>
+                        </t>
                     </div>
                 </div>
-                </div>
             </div>
-    
-            <!-- Right column (4 cols): Display top stories and keywords -->
-            <div class="col-md-4">
-                <!-- Top Stories -->
-                <h4>Top Stories</h4>
-                <ul class="top-stories">
-                <li t-foreach="top_stories" t-as="article">
-                    <a t-att-href="article.website_url">
-                    <t t-esc="article.name"/>
-                    </a>
-                    <span class="view-count">
-                    <i class="fa fa-eye"></i> <t t-esc="article.view_count"/>
-                    </span>
-                </li>
-                </ul>
-    
-                <!-- Keywords -->
-                <h4>Keywords</h4>
-                <ul class="keywords-list">
-                <li t-foreach="keywords" t-as="keyword">
-                    <t t-esc="keyword.name"/>
-                </li>
-                </ul>
-            </div>
-            </div>
-        </div>
-        </section>
-    
-        <!-- Pagination Section -->
-        <section class="pagination-section">
-        <div class="container">
-            <div class="row">
-            <div class="col-12">
-                <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li class="page-item" t-if="page &gt; 1">
-                    <a class="page-link" t-attf-href="?page=#{page - 1}" aria-label="Previous">
-                        <span aria-hidden="true">Prev</span>
-                    </a>
-                    </li>
-                    <li class="page-item" t-foreach="range(1, total_pages + 1)" t-as="pagenum">
-                    <a class="page-link" t-attf-href="?page=#{pagenum}">
-                        <t t-esc="pagenum"/>
-                    </a>
-                    </li>
-                    <li class="page-item" t-if="page &lt; total_pages">
-                    <a class="page-link" t-attf-href="?page=#{page + 1}" aria-label="Next">
-                        <span aria-hidden="true">Next</span>
-                    </a>
-                    </li>
-                </ul>
-                </nav>
-                <p>Page <t t-esc="page"/> of <t t-esc="total_pages"/></p>
-            </div>
-            </div>
-        </div>
         </section>
     </t>
 </template>

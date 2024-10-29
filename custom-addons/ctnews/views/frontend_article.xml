@@ -71,36 +71,39 @@
                     <!-- Most popular section -->
                     
                     <div class="card rounded sticky-top mb-2">
-                        <div class="card-body">
+                        <div class="trending-area card-body">
                             <h3 class="card-title mb-4">Most popular</h3>
+                            
+                            <div class="trending-main">
 
-                            <t t-foreach="most_popular" t-as="article">
-                                <div class="trand-right-single d-flex mb-3">
-                                    <div class="trand-right-cap pl-2">
-                                        <div class="d-flex justify-content-between">
-                                            <span class="color1">
-                                                <t t-esc="article['category_name']"/>  <!-- Display category name -->
-                                            </span>
-                                            <span class="text-muted mb-0 pb-0">
-                                                <i class="fa fa-calendar"></i> <t t-esc="article.time_ago"/>
-                                                <![CDATA[&nbsp;&nbsp;]]>
-                                                <i class="fa fa-eye"></i> <t t-esc="article.view_count"/> views
-                                            </span>
+                                <t t-foreach="most_popular" t-as="article">
+                                    <div class="trand-right-single d-flex mb-3">
+                                        <div class="trand-right-cap pl-2">
+                                            <div class="d-flex justify-content-between">
+                                                <span class="color1">
+                                                    <t t-esc="article['category_name']"/>  <!-- Display category name -->
+                                                </span>
+                                                <span class="text-muted mb-0 pb-0">
+                                                    <i class="fa fa-calendar"></i> <t t-esc="article.time_ago"/>
+                                                    <![CDATA[&nbsp;&nbsp;]]>
+                                                    <i class="fa fa-eye"></i> <t t-esc="article.view_count"/> views
+                                                </span>
+                                            </div>
+                                            <h5>
+                                                <a t-att-href="article['website_url']">
+                                                    <t t-esc="article['name']"/>  <!-- Display article title -->
+                                                </a>
+                                            </h5>
+                                            
                                         </div>
-                                        <h6>
-                                            <a t-att-href="article['website_url']">
-                                                <t t-esc="article['name']"/>  <!-- Display article title -->
-                                            </a>
-                                        </h6>
-                                        
                                     </div>
-                                </div>
-                                <!-- Add a separator bar between articles, but not after the last one -->
-                                <t t-set="article_num" t-value="len(most_popular)"></t>
-                                <t t-if="article_index + 1 &lt; article_num ">
-                                    <hr class="my-3"/>
+                                    <!-- Add a separator bar between articles, but not after the last one -->
+                                    <!-- <t t-set="article_num" t-value="len(most_popular)"></t>
+                                    <t t-if="article_index + 1 &lt; article_num ">
+                                        <hr class="my-3"/>
+                                    </t> -->
                                 </t>
-                            </t>
+                            </div>
                         </div>
                     </div>
 

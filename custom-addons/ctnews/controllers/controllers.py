@@ -17,7 +17,7 @@ class Ctnews(http.Controller):
     _articles_per_page = 8
     
     @http.route('/news', auth='public', website=True)
-    def get_latest_news(self, **kwargs):
+    def get_homepage_articles(self, **kwargs):
         # Fetch the 9 newest articles
         Article = request.env['ctnews.article']
         trending_top = Article.search_read(fields=['name','website_url', 'category_name', 'abstract'], limit=1, order="create_date DESC")
@@ -36,17 +36,25 @@ class Ctnews(http.Controller):
             limit=5  # Limit to 5 articles
         )
 
+        if len(weekly_top) < 5:
+            weekly_top = Article.search_read(
+            domain=[], # Fallback if not enough articles
+            fields=['name', 'website_url', 'category_name', 'create_date'],  # Fields to retrieve
+            order='view_count DESC',  # Order by view count descending
+            limit=5  # Limit to 5 articles
+            )
+
         category_data = []
         Category = request.env['ctnews.category']
         categories = Category.search([
             ('active', '=', True)
         ])
         for cat in categories:
-            articles = Article.search([
+            articles = Article.search_read([
                 ('category_id', '=', cat.id),
                 ('active', '=', True),
                 # ('is_published', '=', True),
-            ], limit=4, order='create_date DESC')
+            ], fields=['name', 'website_url', 'category_name'], limit=4, order='create_date DESC')
             category_data.append({
                 'category': cat,
                 'articles': articles,
@@ -82,11 +90,11 @@ class Ctnews(http.Controller):
         domain = [('category_id', '=', category.id)]
         page = int(kwargs.get('page', 1))
 
-        featured = Article.search(domain=domain, limit=2, order="create_date DESC")
+        featured_articles = Article.search(domain=domain, limit=2, order="create_date DESC")
         articles_in_page = Article.search(
             domain=domain, limit=self._articles_per_page, offset=2+(page-1)*self._articles_per_page, order="create_date DESC"
         )
-        top_stories = Article.search(domain=domain, limit=5, order="view_count DESC")
+        top_stories = Article.search_read(domain=domain, fields=['name', 'category_name', 'view_count', 'create_date', 'website_url'], limit=5, order="view_count DESC")
 
         keywords = Keyword.search(domain=domain, order='name ASC')
 
@@ -94,7 +102,7 @@ class Ctnews(http.Controller):
 
         values = {
             'category': category,
-            'featured': featured,
+            'featured_articles': featured_articles,
             'articles_in_page': articles_in_page,
             'keywords': keywords,
             'page': page,
