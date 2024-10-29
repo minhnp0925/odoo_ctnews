@@ -27,6 +27,7 @@ Long description of module's purpose
         'views/frontend_homepage.xml',
         'views/frontend_article.xml',
         'views/frontend_category.xml',
+        'views/frontend_videos.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
@@ -57,8 +58,7 @@ Long description of module's purpose
             'ctnews/static/src/scss/_bradcam.scss',
             'ctnews/static/src/scss/_extend.scss',
             'ctnews/static/src/scss/_elements.scss',
-            'ctnews/static/src/scss/_article.scss'
-            
+            'ctnews/static/src/scss/_article.scss',
         ], 
     },
 }

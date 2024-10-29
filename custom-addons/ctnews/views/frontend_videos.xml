@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<template id="ctnews.videos" name="Videos">
+    <t t-call="website.layout">
+        <!-- Start Youtube -->
+        <div class="youtube-area video-padding weekly2-pading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="video-items-active">
+                            <div class="video-items text-center">
+                                <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                            </div>
+                            <div class="video-items text-center">
+                                <iframe  src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                            </div>
+                            <div class="video-items text-center">
+                                <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+    
+                            </div>
+                            <div class="video-items text-center">
+                                <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                
+                            </div>
+                            <div class="video-items text-center">
+                                <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="video-caption">
+                                <div class="top-caption">
+                                    <span class="color1">Politics</span>
+                                </div>
+                                <div class="bottom-caption">
+                                    <h2>Welcome To The Best Model Winner Contest At Look of the year</h2>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit lorem ipsum dolor sit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="testmonial-nav text-center">
+                                <div class="single-video">
+                                    <iframe  src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                    <div class="video-intro">
+                                        <h4>Welcotme To The Best Model Winner Contest</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe  src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                    <div class="video-intro">
+                                        <h4>Welcotme To The Best Model Winner Contest</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                    <div class="video-intro">
+                                        <h4>Welcotme To The Best Model Winner Contest</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                    <div class="video-intro">
+                                        <h4>Welcotme To The Best Model Winner Contest</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                    <div class="video-intro">
+                                        <h4>Welcotme To The Best Model Winner Contest</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Start youtube -->
+        <!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="/ctnews/static/src/js/modernizr-3.5.0.min.js"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="/ctnews/static/src/js/jquery.js"></script>
+        <script src="/ctnews/static/src/js/popper.min.js"></script>
+        <script src="/ctnews/static/src/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="/ctnews/static/src/js/jquery.slicknav.min.js"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="/ctnews/static/src/js/owl.carousel.min.js"></script>
+        <script src="/ctnews/static/src/js/slick.min.js"></script>
+        <!-- Date Picker -->
+        <script src="/ctnews/static/src/js/gijgo.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="/ctnews/static/src/js/wow.min.js"></script>
+		<script src="/ctnews/static/src/js/animated.headline.js"></script>
+        <script src="/ctnews/static/src/js/jquery.magnific-popup.js"></script>
+
+        <!-- Breaking New Pluging -->
+        <script src="/ctnews/static/src/js/jquery.ticker.js"></script>
+        <script src="/ctnews/static/src/js/site.js"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="/ctnews/static/src/js/jquery.scrollUp.min.js"></script>
+        <script src="/ctnews/static/src/js/jquery.nice-select.min.js"></script>
+		<script src="/ctnews/static/src/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="/ctnews/static/src/js/contact.js"></script>
+        <script src="/ctnews/static/src/js/jquery.form.js"></script>
+        <script src="/ctnews/static/src/js/jquery.validate.min.js"></script>
+        <script src="/ctnews/static/src/js/mail-script.js"></script>
+        <script src="/ctnews/static/src/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="/ctnews/static/src/js/plugins.js"></script>
+        <script src="/ctnews/static/src/js/main.js"></script>
+    </t>
+</template>
+
+</odoo>

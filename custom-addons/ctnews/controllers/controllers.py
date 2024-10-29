@@ -14,13 +14,7 @@ from odoo.tools import sql
 from datetime import timedelta
 
 class Ctnews(http.Controller):
-    _articles_per_page = 12
-
-
-    @http.route('/test', auth='public', website=True)
-    def news_test(self, **kwargs):
-        # Render the template
-        return http.request.render('ctnews.news_website_homepage', {})
+    _articles_per_page = 8
     
     @http.route('/news', auth='public', website=True)
     def get_latest_news(self, **kwargs):
@@ -42,13 +36,29 @@ class Ctnews(http.Controller):
             limit=5  # Limit to 5 articles
         )
 
+        category_data = []
+        Category = request.env['ctnews.category']
+        categories = Category.search([
+            ('active', '=', True)
+        ])
+        for cat in categories:
+            articles = Article.search([
+                ('category_id', '=', cat.id),
+                ('active', '=', True),
+                # ('is_published', '=', True),
+            ], limit=4, order='create_date DESC')
+            category_data.append({
+                'category': cat,
+                'articles': articles,
+            })
+
         # Pass the articles to the template
         return request.render('ctnews.homepage', {
             'trending_top': trending_top,
             'trending_bottom': trending_bottom,
             'trending_side': trending_side,
-
             'weekly_top': weekly_top,
+            'category_data': category_data
         })
 
     @http.route('/news/<model("ctnews.category"):category>', type='http', auth='public', website=True, sitemap=True)
@@ -130,3 +140,6 @@ class Ctnews(http.Controller):
         return response
 
 
+    @http.route('/videos', website=True, sitemap=True)
+    def get_videos(self):
+        return request.render("ctnews.videos")
