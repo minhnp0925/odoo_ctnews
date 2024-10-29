@@ -20,9 +20,9 @@ class Ctnews(http.Controller):
     def get_homepage_articles(self, **kwargs):
         # Fetch the 9 newest articles
         Article = request.env['ctnews.article']
-        trending_top = Article.search_read(fields=['name','website_url', 'category_name', 'abstract'], limit=1, order="create_date DESC")
-        trending_bottom = Article.search_read(fields=['name','website_url', 'category_name'], limit=3, offset=1, order ="create_date DESC")
-        trending_side = Article.search_read(fields=['name', 'website_url', 'category_name'], limit=5, offset=4, order="create_date DESC")
+        trending_top = Article.search_read(fields=['name','website_url', 'category_name', 'abstract', 'cover_img'], limit=1, order="create_date DESC")
+        trending_bottom = Article.search_read(fields=['name','website_url', 'category_name', 'cover_img'], limit=3, offset=1, order ="create_date DESC")
+        trending_side = Article.search_read(fields=['name', 'website_url', 'category_name', 'cover_img'], limit=5, offset=4, order="create_date DESC")
 
         # Weekly top
         today = fields.Date.context_today(Article)  # Today's date
@@ -31,7 +31,7 @@ class Ctnews(http.Controller):
         # Fetch the top 5 articles with the highest view count in the last 7 days
         weekly_top = Article.search_read(
             [('create_date', '>=', seven_days_ago)],  # Filter by articles in the last 7 days
-            fields=['name', 'website_url', 'category_name', 'create_date'],  # Fields to retrieve
+            fields=['name', 'website_url', 'category_name', 'create_date', 'cover_img'],  # Fields to retrieve
             order='view_count DESC',  # Order by view count descending
             limit=5  # Limit to 5 articles
         )
@@ -39,7 +39,7 @@ class Ctnews(http.Controller):
         if len(weekly_top) < 5:
             weekly_top = Article.search_read(
             domain=[], # Fallback if not enough articles
-            fields=['name', 'website_url', 'category_name', 'create_date'],  # Fields to retrieve
+            fields=['name', 'website_url', 'category_name', 'create_date', 'cover_img'],  # Fields to retrieve
             order='view_count DESC',  # Order by view count descending
             limit=5  # Limit to 5 articles
             )
@@ -54,7 +54,7 @@ class Ctnews(http.Controller):
                 ('category_id', '=', cat.id),
                 ('active', '=', True),
                 # ('is_published', '=', True),
-            ], fields=['name', 'website_url', 'category_name'], limit=4, order='create_date DESC')
+            ], fields=['name', 'website_url', 'category_name', 'cover_img'], limit=4, order='create_date DESC')
             category_data.append({
                 'category': cat,
                 'articles': articles,
@@ -94,7 +94,7 @@ class Ctnews(http.Controller):
         articles_in_page = Article.search(
             domain=domain, limit=self._articles_per_page, offset=2+(page-1)*self._articles_per_page, order="create_date DESC"
         )
-        top_stories = Article.search_read(domain=domain, fields=['name', 'category_name', 'view_count', 'create_date', 'website_url'], limit=5, order="view_count DESC")
+        top_stories = Article.search_read(domain=domain, fields=['name', 'category_name', 'view_count', 'create_date', 'website_url', 'cover_img'], limit=5, order="view_count DESC")
 
         keywords = Keyword.search(domain=domain, order='name ASC')
 

@@ -83,6 +83,8 @@ class Article(models.Model):
 
     name = fields.Char(string='Title', required=True)
     abstract = fields.Char(string='Abstract')
+    cover_img = fields.Image(string='Cover Image', max_width=600, max_height=400, verify_resolution=True)
+
     content = fields.Html('Content', sanitize=False)
     view_count = fields.Integer('View Count', default=0)
     active = fields.Boolean(string="Active", default=True)

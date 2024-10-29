@@ -19,13 +19,13 @@
                 <div class="row">
                     <!-- Title -->
                     <div class="col-md-9">
-                        <h1 class="display-4 pl-2" t-esc="article.name"></h1>
+                        <h1 class="display-4 pl-2" t-field="article.name"></h1>
                     </div>
                 </div>
                 <div class="row align-items-center px-3">
                     <!-- Title and Subtitle -->
                     <div class="col-md-4">
-                        <p class="lead text-primary" t-esc="article.abstract"></p>
+                        <p t-field="article.abstract" class="lead text-primary"></p>
                         <p class="article-meta">
                             <span>
                                 <i class="fa fa-calendar"></i> <t t-esc="article.create_date.strftime('%Y-%m-%d')"/>
@@ -38,7 +38,17 @@
                     </div>
                     <!-- Cover Image -->
                     <div class="col-md-8 d-flex justify-content-center align-items-center">
-                        <img class="img-fluid rounded" t-attf-src="/ctnews/static/src/img/trending/trending_top.jpg" alt=""/>
+                        <t t-if="article.cover_img">
+                            <img class="img-fluid rounded"
+                                t-field="article.cover_img"
+                                t-attf-src="data:image/*;base64,{{article.cover_img}}"
+                                alt="Cover Image"/>
+                        </t>
+                        <t t-else="">
+                            <img class="img-fluid rounded" 
+                                t-attf-src="https://placehold.co/600x400?text=CTNews"
+                                alt="Cover Image"/>
+                        </t>
                     </div>
                 </div>
             </div>
