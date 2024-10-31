@@ -18,20 +18,9 @@
                 <div class="mt-4">
                     <span class="fw-bold text-muted">Keywords:</span>
                     <div class="d-inline-flex flex-wrap mt-2">
-                        <a href="#" class="category-link">Buying Guides</a>
-                        <a href="#" class="category-link">Gift Guide</a>
-                        <a href="#" class="category-link">Laptops</a>
-                        <a href="#" class="category-link">Phones</a>
-                        <a href="#" class="category-link">Headphones</a>
-                        <a href="#" class="category-link">Tablets</a>
-                        <a href="#" class="category-link">Smart Home</a>
-                        <a href="#" class="category-link">Smartwatches</a>
-                        <a href="#" class="category-link">Speakers</a>
-                        <a href="#" class="category-link">Drones</a>
-                        <a href="#" class="category-link">Gaming</a>
-                        <a href="#" class="category-link">Accessories</a>
-                        <a href="#" class="category-link">TV Boxes</a>
-                        <a href="#" class="category-link">Cars</a>
+                        <t t-foreach="keywords" t-as="keyword">
+                            <a href="#" class="category-link"><t t-esc="keyword['name']"/></a>
+                        </t>
                     </div>
                 </div>
             </div>
@@ -46,7 +35,16 @@
                             <div class="col-lg-6">
                                 <div class="trending-top mb-2">
                                     <div class="trend-top-img">
-                                        <img t-attf-src="/ctnews/static/src/img/trending/trending_top.jpg" alt=""/>
+                                        <t t-if="article['cover_img']">
+                                            <img class="img-fluid rounded" 
+                                                t-attf-src="data:image/*;base64,{{article['cover_img']}}"
+                                                alt="Cover Image"/>
+                                        </t>
+                                        <t t-else="">
+                                            <img class="img-fluid rounded" 
+                                                t-attf-src="https://placehold.co/600x400?text=CTNews"
+                                                alt="Cover Image"/>
+                                        </t>
                                         <div class="trend-top-cap">
                                             <h2><a t-att-href="article['website_url']">
                                                 <t t-esc="article['name']"></t>    
@@ -71,7 +69,16 @@
                         <t t-foreach="articles_in_page" t-as="article">  
                             <div class="col-lg-6">
                                 <div class="article-cover-img mb-30">
-                                    <img t-attf-src="/ctnews/static/src/img/trending/trending_bottom1.jpg" alt=""/>
+                                    <t t-if="article['cover_img']">
+                                        <img class="img-fluid rounded" 
+                                            t-attf-src="data:image/*;base64,{{article['cover_img']}}"
+                                            alt="Cover Image"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img class="img-fluid rounded" 
+                                            t-attf-src="https://placehold.co/600x400?text=CTNews"
+                                            alt="Cover Image"/>
+                                    </t>
                                 </div>
                                 <div class="article-bottom-cap">
                                     <h4>
@@ -90,7 +97,16 @@
                         <t t-foreach="top_stories" t-as="article">
                             <div class="article-side-list d-flex">
                                 <div class="trand-right-img">
-                                    <img t-attf-src="/ctnews/static/src/img/trending/right1.jpg" alt=""/>
+                                    <t t-if="article['cover_img']">
+                                        <img class="img-fluid rounded" 
+                                            t-attf-src="data:image/*;base64,{{article['cover_img']}}"
+                                            alt="Cover Image"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img class="img-fluid rounded" 
+                                            t-attf-src="https://placehold.co/600x400?text=CTNews"
+                                            alt="Cover Image"/>
+                                    </t>
                                 </div>
                                 <div class="trand-right-cap">
                                     <h5>
@@ -110,6 +126,47 @@
                 </div>
             </div>
         </section>
+
+        <!--Start pagination -->
+        <div class="pagination-area pb-45 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-wrap d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <!-- Previous Button -->
+                                    <li t-attf-class="page-item #{'disabled' if page &lt;= 1 else ''}">
+                                        <a class="page-link" t-att-href="'%s?page=%s' % (category.website_url, page)">
+                                            <span class="flaticon-arrow roted"></span>
+                                        </a>
+                                    </li>
+                                
+                                    <!-- Page Number Links -->
+                                    <t t-set="range_start" t-value="max(1, page - 2)"/>
+                                    <t t-set="range_end" t-value="min(total_pages, page + 2)"/>
+                                    <t t-foreach="range(range_start, range_end + 1)" t-as="p">
+                                        <li t-attf-class="page-item #{'active' if p == page else ''}">
+                                            <a class="page-link" t-att-href="'%s?page=%s' % (category.website_url, p)">
+                                                <t t-esc="str(p).zfill(2)"/>
+                                            </a>
+                                        </li>
+                                    </t>
+                                
+                                    <!-- Next Button -->
+                                    <li t-attf-class="page-item #{'disabled' if page &gt;= total_pages else ''}">
+                                        <a class="page-link" t-att-href="'%s?page=%s' % (category.website_url, page + 1)">
+                                            <span class="flaticon-arrow right-arrow"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End pagination  -->
     </t>
 </template>
 

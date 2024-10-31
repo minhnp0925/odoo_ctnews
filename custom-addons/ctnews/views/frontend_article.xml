@@ -2,18 +2,28 @@
 <odoo>
 
 <template id="ctnews.article_view" name="Article View">
-    <t t-call="website.layout">
-        <div id="preloader-active">
-            <div class="preloader d-flex align-items-center justify-content-center">
-                <div class="preloader-inner position-relative">
-                    <div class="preloader-circle"></div>
-                    <div class="preloader-img pere-text">
-                        <img t-attf-src="/ctnews/static/src/img/logo/logo.png" alt=""/>
-                    </div>
+    <!-- Preloader -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img t-attf-src="/ctnews/static/src/img/logo/logo.png" alt=""/>
                 </div>
             </div>
         </div>
-        
+    </div>
+
+    <!-- Publish/Unpublish Button -->
+    <div id="website_published_button" class="float-right"
+            groups="base.group_user">
+            <t t-call="website.publish_management">
+                <t t-set="object" t-value="article"/>
+                <t t-set="publish_edit" t-value="True"/>
+                <t t-set="action" t-value="'ctnews.action_article'" />
+            </t>
+    </div>
+    <t t-call="website.layout">    
         <div class="container">
             <div class="news-cover">
                 <div class="row">
@@ -38,10 +48,9 @@
                     </div>
                     <!-- Cover Image -->
                     <div class="col-md-8 d-flex justify-content-center align-items-center">
-                        <t t-if="article.cover_img">
-                            <img class="img-fluid rounded"
-                                t-field="article.cover_img"
-                                t-attf-src="data:image/*;base64,{{article.cover_img}}"
+                        <t t-if="article['cover_img']">
+                            <img class="img-fluid rounded" 
+                                t-attf-src="data:image/*;base64,{{article['cover_img']}}"
                                 alt="Cover Image"/>
                         </t>
                         <t t-else="">

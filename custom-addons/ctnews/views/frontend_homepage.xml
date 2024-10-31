@@ -27,9 +27,9 @@
                                 <strong>Trending now</strong>
                                 <div class="trending-animated">
                                     <ul id="js-news" class="js-hidden">
-                                        <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                        <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                        <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                        <li class="news-item"><a href="#">Bangladesh dolor sit amet, consectetur adipisicing elit.</a></li>
+                                        <li class="news-item"><a href="#">Spondon IT sit amet, consectetur.......</a></li>
+                                        <li class="news-item"><a href="#">Rem ipsum dolor sit amet, consectetur adipisicing elit.</a></li>
                                     </ul>
                                 </div>          
                             </div>
